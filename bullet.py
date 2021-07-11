@@ -6,7 +6,7 @@ class Bullet(Sprite):
     """A class to manage bullets fired from the ship."""
 
     def __init__(self, ai_game):
-        """Created a bullet object at the ship's current position."""
+        """Create a bullet object at the ship's current position."""
         super().__init__()
         self.screen = ai_game.screen
         self.settings = ai_game.settings
@@ -21,7 +21,7 @@ class Bullet(Sprite):
         )
         self.rect.midtop = ai_game.ship.rect.midtop
 
-        # Store the bullet's position as a deciaml value.
+        # Store the bullet's position as a decimal value.
         self.y = float(self.rect.y)
 
     def update(self):
