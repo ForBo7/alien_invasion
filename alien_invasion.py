@@ -32,6 +32,7 @@ class AlienInvasion:
             self._check_events()
             self.ship.update()
             self._update_bullets()
+            self._update_aliens()
             self._update_screen()
 
     def _check_events(self):
@@ -78,6 +79,10 @@ class AlienInvasion:
             if bullet.rect.bottom <= 0:
                 self.bullets.remove(bullet)
 
+    def _update_aliens(self):
+        """Update the positions of all aliens in the fleet."""
+        self.aliens.update()
+
     def _create_fleet(self):
         """Create the fleet of aliens."""
         # Create an alien and find the number of aliens in a row.
@@ -104,7 +109,8 @@ class AlienInvasion:
         alien_width = alien.rect.width
         alien.x = alien_width + ((2 * alien_width) * alien_number)
         alien.rect.x = alien.x
-        alien.y = (alien.rect.height + ((2 * alien.rect.height) * row_number))
+        alien_height = alien.rect.height
+        alien.y = alien_height + ((2 * alien_height) * row_number)
         alien.rect.y = alien.y
         self.aliens.add(alien)
 
@@ -117,6 +123,7 @@ class AlienInvasion:
         self.aliens.draw(self.screen)
 
         pygame.display.flip()
+
 
 
 if __name__ == '__main__':
